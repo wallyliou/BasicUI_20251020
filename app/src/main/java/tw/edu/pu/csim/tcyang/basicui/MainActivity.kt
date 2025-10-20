@@ -156,8 +156,8 @@ fun Main(modifier: Modifier = Modifier) {
                     }
                     Toast.makeText(
                         context,
-                        text="按鈕被點擊",
-                        duration=Toast.LENGTH_SHORT
+                        "按鈕被點擊",
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             ){
