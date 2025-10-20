@@ -1,7 +1,9 @@
 package tw.edu.pu.csim.tcyang.basicui
 
 
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -30,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -66,6 +69,12 @@ fun Main(modifier: Modifier = Modifier) {
 
     var AnimalsName = arrayListOf("鴨子","企鵝",
         "青蛙","貓頭鷹","海豚", "牛", "無尾熊", "獅子", "狐狸", "小雞")
+
+    var flag by remember { mutableStateOf(value="test") }
+
+    val context = LocalContext.current
+
+    var mper: MediaPlayer? by remember { mutableStateOf(null) }
 
 
     Column (
@@ -135,7 +144,7 @@ fun Main(modifier: Modifier = Modifier) {
 
         }
         Spacer(modifier = Modifier.size(10.dp))
-        var flag by remember { mutableStateOf(value="test") }
+
 
             Button(
                 onClick= {
@@ -145,11 +154,50 @@ fun Main(modifier: Modifier = Modifier) {
                     else {
                         flag = "test"
                     }
+                    Toast.makeText(
+                        context,
+                        text="按鈕被點擊",
+                        duration=Toast.LENGTH_SHORT
+                    ).show()
                 }
             ){
                 Text(text = ("歡迎修課"))
             }
             Text(text=flag)
+
+        Spacer(modifier = Modifier.size(10.dp))
+
+        Row{
+
+            Button(onClick = {
+
+            }) {
+
+                Text(text = "歡迎修課")
+
+            }
+
+            Spacer(modifier = Modifier.size(10.dp))
+
+            Button(onClick = {
+
+            }) {
+
+                Text(text = "展翅飛翔")
+
+            }
+
+            Spacer(modifier = Modifier.size(10.dp))
+
+            Button(onClick = {
+
+            }) {
+
+                Text(text = "結束App")
+
+            }
+
+        }
 
 
 
