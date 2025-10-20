@@ -70,6 +70,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Main(modifier: Modifier = Modifier) {
 
+    var currentAnimalImage by remember { mutableIntStateOf(R.drawable.animal0) }
+
     var Animals = listOf(R.drawable.animal0, R.drawable.animal1,
         R.drawable.animal2, R.drawable.animal3,
         R.drawable.animal4, R.drawable.animal5,
@@ -262,6 +264,33 @@ fun Main(modifier: Modifier = Modifier) {
                 Text(text = "結束App")
 
             }
+
+        }
+        Spacer(modifier = Modifier.size(10.dp))
+
+        Button(onClick = {
+            currentAnimalImage = if (currentAnimalImage == R.drawable.animal0) {
+                R.drawable.animal1
+            } else {
+                R.drawable.animal0
+            }
+
+        },
+            modifier = Modifier
+
+                .fillMaxWidth(0.5f)
+
+                .fillMaxHeight(1f),
+
+            colors = buttonColors(Color.Red)
+        ) {
+
+
+
+            Image(
+                painterResource(id = currentAnimalImage), // <--- 現在使用狀態變數
+                contentDescription ="小動物"
+            )
 
         }
 
